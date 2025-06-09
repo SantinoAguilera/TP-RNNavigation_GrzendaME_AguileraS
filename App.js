@@ -113,7 +113,7 @@ function ScreenC2() {
   return (
     <View style={styles.perfilScreen}>
       <Text style={styles.text}>PERFIL - EDICION</Text>
-      
+
       <Text style={styles.label}>Name</Text>
       <TextInput
         style={styles.input}
@@ -144,7 +144,7 @@ function ScreenC2() {
 function ScreenD1() {
   const navigation = useNavigation();
   return (
-    <View style={styles.perfilScreen}>
+    <View style={styles.creditosScreen}>
       <Text style={styles.text}>PERFIL</Text>
       <Text style={styles.description}>
         Cuarto Stack - Primer Screen
@@ -160,7 +160,7 @@ function ScreenD1() {
 function ScreenD2() {
   const navigation = useNavigation();
   return (
-    <View style={styles.perfilScreen}>
+    <View style={styles.creditosScreen}>
       <Text style={styles.text}>PERFIL</Text>
       <Text style={styles.description}>
         Cuarto Stack - Segunda Screen
@@ -202,10 +202,10 @@ function StackBNavigator() {
 function StackCNavigator() {
   return (
     <StackC.Navigator>
-      <StackC.Screen 
-        name="ScreenC1" 
-        component={ScreenC1} 
-        options={{ 
+      <StackC.Screen
+        name="ScreenC1"
+        component={ScreenC1}
+        options={{
           //title: Cambia el título que aparece en el encabezado de la pantalla.
           title: 'Otro Titulo',
           //headerStyle: Personaliza el estilo del encabezado, como el color de fondo.
@@ -213,7 +213,7 @@ function StackCNavigator() {
           //headerTintColor: Cambia el color del texto y los íconos del encabezado.
           headerTintColor: '#fff',
           //headerTitleStyle: Cambia el estilo del título del encabezado, como la fuente y el tamaño del texto.
-          headerTitleStyle: { fontWeight: 'bold' } ,
+          headerTitleStyle: { fontWeight: 'bold' },
           //headerTitleAlign: Alinea el título del encabezado al centro o a la izquierda.
           headerTitleAlign: 'center',
           //headerRight: Agrega un componente personalizado en la esquina superior derecha del encabezado.
@@ -226,18 +226,18 @@ function StackCNavigator() {
             />
           ),
           //headerTransparent: Hace que el encabezado sea transparente.
-          headerTransparent: true 
-         }}
+          headerTransparent: true
+        }}
       />
 
-      <StackC.Screen 
-        name="ScreenC2" 
-        component={ScreenC2} 
-        options={{ 
+      <StackC.Screen
+        name="ScreenC2"
+        component={ScreenC2}
+        options={{
           //headerShown: Muestra u oculta el encabezado de la pantalla.
           headerShown: false
-         }}
-        />
+        }}
+      />
     </StackC.Navigator>
   );
 }
@@ -245,10 +245,10 @@ function StackCNavigator() {
 function StackDNavigator() {
   return (
     <StackD.Navigator>
-      <StackD.Screen 
-        name="ScreenD1" 
-        component={ScreenD1} 
-        options={{ 
+      <StackD.Screen
+        name="ScreenD1"
+        component={ScreenD1}
+        options={{
           //title: Cambia el título que aparece en el encabezado de la pantalla.
           title: 'Otro Titulo',
           //headerStyle: Personaliza el estilo del encabezado, como el color de fondo.
@@ -256,7 +256,7 @@ function StackDNavigator() {
           //headerTintColor: Cambia el color del texto y los íconos del encabezado.
           headerTintColor: '#fff',
           //headerTitleStyle: Cambia el estilo del título del encabezado, como la fuente y el tamaño del texto.
-          headerTitleStyle: { fontWeight: 'bold' } ,
+          headerTitleStyle: { fontWeight: 'bold' },
           //headerTitleAlign: Alinea el título del encabezado al centro o a la izquierda.
           headerTitleAlign: 'center',
           //headerRight: Agrega un componente personalizado en la esquina superior derecha del encabezado.
@@ -269,18 +269,18 @@ function StackDNavigator() {
             />
           ),
           //headerTransparent: Hace que el encabezado sea transparente.
-          headerTransparent: true 
-         }}
+          headerTransparent: true
+        }}
       />
 
-      <StackD.Screen 
-        name="ScreenD2" 
-        component={ScreenD2} 
-        options={{ 
+      <StackD.Screen
+        name="ScreenD2"
+        component={ScreenD2}
+        options={{
           //headerShown: Muestra u oculta el encabezado de la pantalla.
           headerShown: false
-         }}
-        />
+        }}
+      />
     </StackD.Navigator>
   );
 }
@@ -292,27 +292,27 @@ const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
     <Tab.Navigator>
-      <Tab.Screen 
-        name="Home" 
-        component={StackANavigator} 
+      <Tab.Screen
+        name="Home"
+        component={StackANavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={24} color={color} />
           ),
         }}
       />
-      <Tab.Screen 
-        name="Buscador" 
-        component={StackBNavigator} 
+      <Tab.Screen
+        name="Buscador"
+        component={StackBNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="search" size={24} color={color} />
           ),
         }}
       />
-      <Tab.Screen 
-        name="Perfil" 
-        component={StackCNavigator} 
+      <Tab.Screen
+        name="Perfil"
+        component={StackCNavigator}
         options={{
           // title: 'Perfil', // Lo pone en todos! 
           tabBarIcon: ({ color }) => (
@@ -321,9 +321,9 @@ function MyTabs() {
           ),
         }}
       />
-      <Tab.Screen 
+      <Tab.Screen
         name="Cuarto Stack que todavía no se que va a tener"
-        component={StackDNavigator} 
+        component={StackDNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="person" size={24} color={color} />
@@ -354,35 +354,41 @@ const styles = StyleSheet.create({
     backgroundColor: 'black', // Fondo negro para contrastar el texto blanco
   },
   text: {
-    color: 'white',
+    color: 'black',
     fontSize: 20,
   },
   description: {
-    color: 'white',
+    color: 'black',
     fontSize: 16,
   },
   button: {
     marginTop: 20,
   },
-  
-  homeScreen: { 
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    backgroundColor:'#ff0000' 
+
+  homeScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#c4fdff'
   },
-  
-  searchScreen: { 
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    backgroundColor:'#044a16' 
+
+  searchScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#c4c8ff'
   },
-  perfilScreen: { 
-    flex: 1, 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    backgroundColor:'#0000ff' 
+  perfilScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ecc4ff'
+  },
+  creditosScreen: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ffc4ed'
   },
   label: {
     fontSize: 16,
