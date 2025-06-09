@@ -326,8 +326,7 @@ function MyTabs() {
         component={StackDNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <Ionicons name="person" size={24} color={color} />
-            // name = "person", "search", "home"
+            <Ionicons name="information-circle" size={24} color={color} />
           ),
         }}
       />
