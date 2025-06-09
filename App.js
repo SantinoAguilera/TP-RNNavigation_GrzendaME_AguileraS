@@ -139,11 +139,47 @@ function ScreenC2() {
 }
 
 //
+// Screens del Cuarto Stack
+//
+function ScreenD1() {
+  const navigation = useNavigation();
+  return (
+    <View style={styles.perfilScreen}>
+      <Text style={styles.text}>PERFIL</Text>
+      <Text style={styles.description}>
+        Cuarto Stack - Primer Screen
+        {'\n\n'}
+        * Se modifico la Barra, se centro, se puso un boton! (ver la barra):
+        {'\n'}
+      </Text>
+      <Button title="IR A ScreenD2" onPress={() => navigation.navigate('ScreenD2')} />
+    </View>
+  );
+}
+
+function ScreenD2() {
+  const navigation = useNavigation();
+  return (
+    <View style={styles.perfilScreen}>
+      <Text style={styles.text}>PERFIL</Text>
+      <Text style={styles.description}>
+        Cuarto Stack - Segunda Screen
+        {'\n\n'}
+        * Se modifico la Barra, se centro, se puso un boton! (ver la barra):
+        {'\n'}
+      </Text>
+      <Button title="IR A ScreenD1" onPress={() => navigation.navigate('ScreenD1')} />
+    </View>
+  );
+}
+
+//
 // Creación de los stacks
 //
 const StackA = createNativeStackNavigator();
 const StackB = createNativeStackNavigator();
 const StackC = createNativeStackNavigator();
+const StackD = createNativeStackNavigator();
 
 function StackANavigator() {
   return (
@@ -206,6 +242,49 @@ function StackCNavigator() {
   );
 }
 
+function StackDNavigator() {
+  return (
+    <StackD.Navigator>
+      <StackD.Screen 
+        name="ScreenD1" 
+        component={ScreenD1} 
+        options={{ 
+          //title: Cambia el título que aparece en el encabezado de la pantalla.
+          title: 'Otro Titulo',
+          //headerStyle: Personaliza el estilo del encabezado, como el color de fondo.
+          headerStyle: { backgroundColor: 'purple' },
+          //headerTintColor: Cambia el color del texto y los íconos del encabezado.
+          headerTintColor: '#fff',
+          //headerTitleStyle: Cambia el estilo del título del encabezado, como la fuente y el tamaño del texto.
+          headerTitleStyle: { fontWeight: 'bold' } ,
+          //headerTitleAlign: Alinea el título del encabezado al centro o a la izquierda.
+          headerTitleAlign: 'center',
+          //headerRight: Agrega un componente personalizado en la esquina superior derecha del encabezado.
+          //headerLeft.. lo mismo
+          headerRight: () => (
+            <Button
+              onPress={() => alert('Hice Click!!')}
+              title="Info"
+              color="#00cc00"
+            />
+          ),
+          //headerTransparent: Hace que el encabezado sea transparente.
+          headerTransparent: true 
+         }}
+      />
+
+      <StackD.Screen 
+        name="ScreenD2" 
+        component={ScreenD2} 
+        options={{ 
+          //headerShown: Muestra u oculta el encabezado de la pantalla.
+          headerShown: false
+         }}
+        />
+    </StackD.Navigator>
+  );
+}
+
 //
 // Creación del BottomTabNavigator
 //
@@ -216,26 +295,36 @@ function MyTabs() {
       <Tab.Screen 
         name="Home" 
         component={StackANavigator} 
-        /*options={{
+        options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="home" size={24} color={color} />
           ),
-        }}*/
+        }}
       />
       <Tab.Screen 
         name="Buscador" 
         component={StackBNavigator} 
-        /*options={{
+        options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="search" size={24} color={color} />
           ),
-        }}*/
+        }}
       />
       <Tab.Screen 
         name="Perfil" 
         component={StackCNavigator} 
         options={{
           // title: 'Perfil', // Lo pone en todos! 
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="person" size={24} color={color} />
+            // name = "person", "search", "home"
+          ),
+        }}
+      />
+      <Tab.Screen 
+        name="Cuarto Stack que todavía no se que va a tener"
+        component={StackDNavigator} 
+        options={{
           tabBarIcon: ({ color }) => (
             <Ionicons name="person" size={24} color={color} />
             // name = "person", "search", "home"
