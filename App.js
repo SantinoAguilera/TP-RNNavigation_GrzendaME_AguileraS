@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, TextInput, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { TextInput, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -21,7 +21,7 @@ function ScreenA1() {
         navigation.navigate('ScreenA2').
         {'\n'}
       </Text>
-      <Button title="Ir A ScreenA2" onPress={() => navigation.navigate('ScreenA2')} />
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenA2')} style={styles.button}>Ir A ScreenA2</TouchableOpacity>
     </View>
   );
 }
@@ -39,7 +39,7 @@ function ScreenA2() {
         navigation.navigate('ScreenA1')
         {'\n'}
       </Text>
-      <Button title="Ir A ScreenA1" onPress={() => navigation.navigate('ScreenA1')} />
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenA1')} style={styles.button}>Ir A ScreenA1</TouchableOpacity>
     </View>
   );
 }
@@ -62,8 +62,8 @@ function ScreenB1() {
         * Ejemplo de un boton con un Icono de 'Ionicons'
         {'\n'}
       </Text>
-      <Button title="ScreenB2 itemId: 1" onPress={() => navigation.navigate('ScreenB2', { itemId: 1 })} />
-      <Button title="ScreenB2 itemId: 2" onPress={() => navigation.navigate('ScreenB2', { itemId: 2 })} />
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenB2', { itemId: 1 })} style={styles.button}>ScreenB2 itemId: 1</TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenB2', { itemId: 2 })} style={styles.button}>ScreenB2 itemId: 2</TouchableOpacity>
       <TouchableOpacity onPress={() => alert('Presionaste en el Icono!')}>
         <Ionicons name="search" size={50} color="white" />
       </TouchableOpacity>
@@ -84,7 +84,7 @@ function ScreenB2({ route }) {
         * No hay boton para navegar (ver la barra):
         {'\n'}
       </Text>
-      {/* <Button title="BUSCADOR" onPress={() => navigation.navigate('ScreenB1')} /> */}
+      {/* <TouchableOpacity title="BUSCADOR" onPress={() => navigation.navigate('ScreenB1')} /> */}
     </View>
   );
 }
@@ -103,7 +103,7 @@ function ScreenC1() {
         * Se modifico la Barra, se centro, se puso un boton! (ver la barra):
         {'\n'}
       </Text>
-      <Button title="IR A ScreenC2" onPress={() => navigation.navigate('ScreenC2')} />
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenC2')} style={styles.button}>IR A ScreenC2</TouchableOpacity>
     </View>
   );
 }
@@ -133,7 +133,7 @@ function ScreenC2() {
         secureTextEntry
       />
 
-      <Button title="IR A ScreenC1" onPress={() => navigation.navigate('ScreenC1')} />
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenC1')} style={styles.button}>IR A ScreenC1</TouchableOpacity>
     </View>
   );
 }
@@ -152,7 +152,7 @@ function ScreenD1() {
         * Se modifico la Barra, se centro, se puso un boton! (ver la barra):
         {'\n'}
       </Text>
-      <Button title="IR A ScreenD2" onPress={() => navigation.navigate('ScreenD2')} />
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenD2')} style={styles.button}>IR A ScreenD2</TouchableOpacity>
     </View>
   );
 }
@@ -168,7 +168,7 @@ function ScreenD2() {
         * Se modifico la Barra, se centro, se puso un boton! (ver la barra):
         {'\n'}
       </Text>
-      <Button title="IR A ScreenD1" onPress={() => navigation.navigate('ScreenD1')} />
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenD1')} style={styles.button}>IR A ScreenD1</TouchableOpacity>
     </View>
   );
 }
@@ -219,7 +219,7 @@ function StackCNavigator() {
           //headerRight: Agrega un componente personalizado en la esquina superior derecha del encabezado.
           //headerLeft.. lo mismo
           headerRight: () => (
-            <Button
+            <TouchableOpacity
               onPress={() => alert('Hice Click!!')}
               title="Info"
               color="#00cc00"
@@ -262,7 +262,7 @@ function StackDNavigator() {
           //headerRight: Agrega un componente personalizado en la esquina superior derecha del encabezado.
           //headerLeft.. lo mismo
           headerRight: () => (
-            <Button
+            <TouchableOpacity
               onPress={() => alert('Hice Click!!')}
               title="Info"
               color="#00cc00"
@@ -363,6 +363,11 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
+    backgroundColor: '#8E5DFB',
+    borderRadius: 15,
+    padding: 12,
+    fontFamily: 'Arial',
+    color: 'white'
   },
 
   homeScreen: {
@@ -393,15 +398,16 @@ const styles = StyleSheet.create({
   label: {
     fontSize: 16,
     marginBottom: 5,
-    color: 'white',
+    color: 'black',
   },
   input: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: '#555',
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
+    borderRadius: 15,
     width: '90%',
-    color: 'white',
+    color: 'black',
   },
 });
