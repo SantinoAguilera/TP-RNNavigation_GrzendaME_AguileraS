@@ -249,27 +249,8 @@ function StackDNavigator() {
         name="ScreenD1"
         component={ScreenD1}
         options={{
-          //title: Cambia el título que aparece en el encabezado de la pantalla.
-          title: 'Otro Titulo',
-          //headerStyle: Personaliza el estilo del encabezado, como el color de fondo.
-          headerStyle: { backgroundColor: 'purple' },
-          //headerTintColor: Cambia el color del texto y los íconos del encabezado.
-          headerTintColor: '#fff',
-          //headerTitleStyle: Cambia el estilo del título del encabezado, como la fuente y el tamaño del texto.
-          headerTitleStyle: { fontWeight: 'bold' },
-          //headerTitleAlign: Alinea el título del encabezado al centro o a la izquierda.
-          headerTitleAlign: 'center',
-          //headerRight: Agrega un componente personalizado en la esquina superior derecha del encabezado.
-          //headerLeft.. lo mismo
-          headerRight: () => (
-            <Button
-              onPress={() => alert('Hice Click!!')}
-              title="Info"
-              color="#00cc00"
-            />
-          ),
-          //headerTransparent: Hace que el encabezado sea transparente.
-          headerTransparent: true
+          //headerShown: Muestra u oculta el encabezado de la pantalla.
+          headerShown: false
         }}
       />
 
