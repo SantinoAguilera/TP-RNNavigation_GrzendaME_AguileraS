@@ -1,45 +1,54 @@
-import * as React from 'react';
-import { TextInput, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import {useState} from 'react';
+import { TextInput, Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
+import homeImage from './assets/home.avif';
 
 //
 // Screens del Primer Stack
 //
-function ScreenA1() {
+function Home1() {
   const navigation = useNavigation();
+  const [text, setText] = useState("");
+
+  const submit = (e) => {
+    setText("Bienvenido a Home, " + e.value + "!"); //corregir esto
+  }
+
   return (
     <View style={styles.homeScreen}>
       <Text style={styles.text}>HOME</Text>
+      <Image source={homeImage} style={styles.homeImage}></Image>
+      <Text style={styles.label}>Ingresa tu nombre:</Text>
+      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={submit}></TextInput>
       <Text style={styles.description}>
-        Primer Stack - Primer Screen
-        {'\n\n'}
-        Boton para navegar a ScreenA2
-        {'\n'}
-        navigation.navigate('ScreenA2').
-        {'\n'}
+        {text}
       </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenA2')} style={styles.button}>Ir A ScreenA2</TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Home2')} style={styles.button}>Ir A Home 2</TouchableOpacity>
     </View>
   );
 }
 
-function ScreenA2() {
+function Home2() {
   const navigation = useNavigation();
+  const [text, setText] = useState("");
+
+  const submit = (e) => {
+    setText("Bienvenido a Home 2, " + e.value + "!"); //corregir esto
+  }
+
   return (
     <View style={styles.homeScreen}>
-      <Text style={styles.text}>HOME - ALGO</Text>
+      <Text style={styles.text}>HOME... 2?</Text>
+      <Image source={homeImage} style={styles.homeImage}></Image>
+      <Text style={styles.label}>Ingresa tu nombre:</Text>
+      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={submit}></TextInput>
       <Text style={styles.description}>
-        Primer Stack - Segunda Screen
-        {'\n\n'}
-        *Boton para navegar a ScreenA1
-        {'\n'}
-        navigation.navigate('ScreenA1')
-        {'\n'}
+        {text}
       </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenA1')} style={styles.button}>Ir A ScreenA1</TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Home1')} style={styles.button}>Ir A Home</TouchableOpacity>
     </View>
   );
 }
@@ -184,8 +193,8 @@ const StackD = createNativeStackNavigator();
 function StackANavigator() {
   return (
     <StackA.Navigator>
-      <StackA.Screen name="ScreenA1" component={ScreenA1} />
-      <StackA.Screen name="ScreenA2" component={ScreenA2} />
+      <StackA.Screen name="Home1" component={Home1} />
+      <StackA.Screen name="Home2" component={Home2} />
     </StackA.Navigator>
   );
 }
@@ -249,32 +258,8 @@ function StackDNavigator() {
         name="ScreenD1"
         component={ScreenD1}
         options={{
-<<<<<<< HEAD
           //headerShown: Muestra u oculta el encabezado de la pantalla.
           headerShown: false
-=======
-          //title: Cambia el título que aparece en el encabezado de la pantalla.
-          title: 'Otro Titulo',
-          //headerStyle: Personaliza el estilo del encabezado, como el color de fondo.
-          headerStyle: { backgroundColor: 'purple' },
-          //headerTintColor: Cambia el color del texto y los íconos del encabezado.
-          headerTintColor: '#fff',
-          //headerTitleStyle: Cambia el estilo del título del encabezado, como la fuente y el tamaño del texto.
-          headerTitleStyle: { fontWeight: 'bold' },
-          //headerTitleAlign: Alinea el título del encabezado al centro o a la izquierda.
-          headerTitleAlign: 'center',
-          //headerRight: Agrega un componente personalizado en la esquina superior derecha del encabezado.
-          //headerLeft.. lo mismo
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => alert('Hice Click!!')}
-              title="Info"
-              color="#00cc00"
-            />
-          ),
-          //headerTransparent: Hace que el encabezado sea transparente.
-          headerTransparent: true
->>>>>>> 86128eb4e436623840894780d51b9354176a2b6e
         }}
       />
 
@@ -327,7 +312,7 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Cuarto Stack que todavía no se que va a tener"
+        name="Créditos"
         component={StackDNavigator}
         options={{
           tabBarIcon: ({ color }) => (
@@ -381,6 +366,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#c4fdff'
   },
 
+  homeImage: {
+    height: "195px",
+    width: "132px"
+  },
   searchScreen: {
     flex: 1,
     justifyContent: 'center',
