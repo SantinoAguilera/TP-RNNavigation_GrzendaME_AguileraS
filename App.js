@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { TextInput, Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -13,16 +13,12 @@ function Home1() {
   const navigation = useNavigation();
   const [text, setText] = useState("");
 
-  const submit = (e) => {
-    setText("Bienvenido a Home, " + e.value + "!"); //corregir esto
-  }
-
   return (
     <View style={styles.homeScreen}>
       <Text style={styles.text}>HOME</Text>
       <Image source={homeImage} style={styles.homeImage}></Image>
       <Text style={styles.label}>Ingresa tu nombre:</Text>
-      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={submit}></TextInput>
+      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={(newText) => setText("Bienvenido a Home, " + newText + "!")}></TextInput>
       <Text style={styles.description}>
         {text}
       </Text>
@@ -35,16 +31,12 @@ function Home2() {
   const navigation = useNavigation();
   const [text, setText] = useState("");
 
-  const submit = (e) => {
-    setText("Bienvenido a Home 2, " + e.value + "!"); //corregir esto
-  }
-
   return (
     <View style={styles.homeScreen}>
       <Text style={styles.text}>HOME... 2?</Text>
       <Image source={homeImage} style={styles.homeImage}></Image>
       <Text style={styles.label}>Ingresa tu nombre:</Text>
-      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={submit}></TextInput>
+      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={(newText) => setText("Bienvenido a Home 2, " + newText + "!")}></TextInput>
       <Text style={styles.description}>
         {text}
       </Text>
