@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { TextInput, Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { NavigationContainer, useNavigation, useRoute } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Ionicons } from '@expo/vector-icons';
 import homeImage from './assets/home.avif';
+import matiImage from './assets/matiImage.jpg';
+import sasaImage from './assets/sasaImage.avif';
+import profileImage from './assets/profileImage.jpg';
 
 //
 // Screens del Primer Stack
@@ -95,13 +98,19 @@ function ScreenB2({ route }) {
 //
 function ScreenC1() {
   const navigation = useNavigation();
+  const route = useRoute();
+  const { name, phone } = route.params || {};
+
   return (
     <View style={styles.perfilScreen}>
       <Text style={styles.text}>PERFIL</Text>
+      <Image source={profileImage} style={styles.homeImage}></Image>
       <Text style={styles.description}>
-        Tercer Stack - Primer Screen
+        Resumen de Perfil
         {'\n\n'}
-        * Se modifico la Barra, se centro, se puso un boton! (ver la barra):
+        Nombre: {name}
+        {'\n\n'}
+        Teléfono: {phone}
         {'\n'}
       </Text>
       <TouchableOpacity onPress={() => navigation.navigate('ScreenC2')} style={styles.button}>IR A ScreenC2</TouchableOpacity>
@@ -111,6 +120,8 @@ function ScreenC1() {
 
 function ScreenC2() {
   const navigation = useNavigation();
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   return (
     <View style={styles.perfilScreen}>
       <Text style={styles.text}>PERFIL - EDICION</Text>
@@ -119,22 +130,19 @@ function ScreenC2() {
       <TextInput
         style={styles.input}
         placeholder="Enter your name"
+        value={name}
+        onChangeText={setName}
       />
-      <Text style={styles.label}>Email</Text>
+      <Text style={styles.label}>Phone Number</Text>
       <TextInput
         style={styles.input}
-        placeholder="Enter your email"
-        keyboardType="email-address"
+        placeholder="Enter your phone number"
+        keyboardType="numeric"
+        value={phone}
+        onChangeText={setPhone}
       />
 
-      <Text style={styles.label}>Password</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your password"
-        secureTextEntry
-      />
-
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenC1')} style={styles.button}>IR A ScreenC1</TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenC1', { name: name, phone: phone })} style={styles.button}>IR A ScreenC1</TouchableOpacity>
     </View>
   );
 }
@@ -146,11 +154,12 @@ function ScreenD1() {
   const navigation = useNavigation();
   return (
     <View style={styles.creditosScreen}>
-      <Text style={styles.text}>PERFIL</Text>
+      <Text style={styles.text}>CREDITOS</Text>
       <Text style={styles.description}>
-        Cuarto Stack - Primer Screen
+        TP hecho por estas dos creaturas:
         {'\n\n'}
-        * Se modifico la Barra, se centro, se puso un boton! (ver la barra):
+        <Image source={matiImage} style={styles.creditsImage}></Image>
+        <Image source={sasaImage} style={styles.creditsImage}></Image>
         {'\n'}
       </Text>
       <TouchableOpacity onPress={() => navigation.navigate('ScreenD2')} style={styles.button}>IR A ScreenD2</TouchableOpacity>
@@ -162,11 +171,12 @@ function ScreenD2() {
   const navigation = useNavigation();
   return (
     <View style={styles.creditosScreen}>
-      <Text style={styles.text}>PERFIL</Text>
+      <Text style={styles.text}>CREDITOS</Text>
       <Text style={styles.description}>
-        Cuarto Stack - Segunda Screen
+        TP hecho por estas dos creaturas:
         {'\n\n'}
-        * Se modifico la Barra, se centro, se puso un boton! (ver la barra):
+        <Image source={sasaImage} style={styles.creditsImage}></Image>
+        <Image source={matiImage} style={styles.creditsImage}></Image>
         {'\n'}
       </Text>
       <TouchableOpacity onPress={() => navigation.navigate('ScreenD1')} style={styles.button}>IR A ScreenD1</TouchableOpacity>
@@ -236,7 +246,7 @@ function StackCNavigator() {
         component={ScreenC2}
         options={{
           //headerShown: Muestra u oculta el encabezado de la pantalla.
-          headerShown: false
+          headerShown: true
         }}
       />
     </StackC.Navigator>
@@ -251,7 +261,7 @@ function StackDNavigator() {
         component={ScreenD1}
         options={{
           //headerShown: Muestra u oculta el encabezado de la pantalla.
-          headerShown: false
+          headerShown: true
         }}
       />
 
@@ -260,7 +270,7 @@ function StackDNavigator() {
         component={ScreenD2}
         options={{
           //headerShown: Muestra u oculta el encabezado de la pantalla.
-          headerShown: false
+          headerShown: true
         }}
       />
     </StackD.Navigator>
@@ -362,6 +372,13 @@ const styles = StyleSheet.create({
     height: "195px",
     width: "132px"
   },
+
+  creditsImage: {
+    height: "300px",
+    width: "250px",
+    margin: "10px"
+  },
+
   searchScreen: {
     flex: 1,
     justifyContent: 'center',
