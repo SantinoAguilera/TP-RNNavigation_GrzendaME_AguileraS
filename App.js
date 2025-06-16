@@ -53,42 +53,30 @@ function Home2() {
 //
 function ScreenB1() {
   const navigation = useNavigation();
+  const [text, setText] = useState("");
   return (
     <View style={styles.searchScreen}>
       <Text style={styles.text}>BUSCADOR</Text>
+      <TextInput style={styles.input} placeholder="Buscador" onSubmitEditing={setText("El buscador se encuentra en mantenimiento.")}></TextInput>
       <Text style={styles.description}>
-        Segundo Stack - Primer Screen
-        {'\n\n'}
-        * Botones para navegar a ScreenB2 y ScreenB2 enviando Parametros:
-        {'\n'}
-        navigation.navigate('ScreenB2', {'{itemId: 1k}'})
-        {'\n\n'}
-        * Ejemplo de un boton con un Icono de 'Ionicons'
-        {'\n'}
+        {text}
       </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenB2', { itemId: 1 })} style={styles.button}>ScreenB2 itemId: 1</TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenB2', { itemId: 2 })} style={styles.button}>ScreenB2 itemId: 2</TouchableOpacity>
-      <TouchableOpacity onPress={() => alert('Presionaste en el Icono!')}>
-        <Ionicons name="search" size={50} color="white" />
-      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenB2')} style={styles.button}>Buscar un buscador que ande</TouchableOpacity>
     </View>
   );
 }
 
-function ScreenB2({ route }) {
-  const { itemId } = route.params;
+function ScreenB2() {
   const navigation = useNavigation();
+  const [text, setText] = useState("");
   return (
     <View style={styles.searchScreen}>
-      <Text style={styles.text}>BUSCADOR - ITEM</Text>
-      <Text style={styles.text}>Parametro recibido {itemId}</Text>
+      <Text style={styles.text}>BUSCADOR</Text>
+      <TextInput style={styles.input} placeholder="Buscador" onSubmitEditing={setText("No es este.")}></TextInput>
       <Text style={styles.description}>
-        Segundo Stack - Segunda Screen
-        {'\n\n'}
-        * No hay boton para navegar (ver la barra):
-        {'\n'}
+        {text}
       </Text>
-      {/* <TouchableOpacity title="BUSCADOR" onPress={() => navigation.navigate('ScreenB1')} /> */}
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenB2')} style={styles.button}>Buscar un buscador que ande</TouchableOpacity>
     </View>
   );
 }
@@ -113,7 +101,7 @@ function ScreenC1() {
         Teléfono: {phone}
         {'\n'}
       </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenC2')} style={styles.button}>IR A ScreenC2</TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenC2')} style={styles.button}>CAMBIAR DATOS</TouchableOpacity>
     </View>
   );
 }
@@ -142,7 +130,7 @@ function ScreenC2() {
         onChangeText={setPhone}
       />
 
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenC1', { name: name, phone: phone })} style={styles.button}>IR A ScreenC1</TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenC1', { name: name, phone: phone })} style={styles.button}>Volver a perfil</TouchableOpacity>
     </View>
   );
 }
@@ -162,7 +150,7 @@ function ScreenD1() {
         <Image source={sasaImage} style={styles.creditsImage}></Image>
         {'\n'}
       </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenD2')} style={styles.button}>IR A ScreenD2</TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenD2')} style={styles.button}>IR A CREDITOS (creditos)</TouchableOpacity>
     </View>
   );
 }
@@ -171,15 +159,15 @@ function ScreenD2() {
   const navigation = useNavigation();
   return (
     <View style={styles.creditosScreen}>
-      <Text style={styles.text}>CREDITOS</Text>
+      <Text style={styles.text}>CREDITOS (creditos)</Text>
       <Text style={styles.description}>
-        TP hecho por estas dos criaturas:
+        Creditos hechos por estas dos criaturas:
         {'\n\n'}
         <Image source={sasaImage} style={styles.creditsImage}></Image>
         <Image source={matiImage} style={styles.creditsImage}></Image>
         {'\n'}
       </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenD1')} style={styles.button}>IR A ScreenD1</TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenD1')} style={styles.button}>IR A CREDITOS</TouchableOpacity>
     </View>
   );
 }
