@@ -76,7 +76,22 @@ function ScreenB2() {
       <Text style={styles.description}>
         {text}
       </Text>
-      <TouchableOpacity onPress={() => navigation.navigate('ScreenB2')} style={styles.button}>Buscar un buscador que ande</TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenB3')} style={styles.button}>Buscar un buscador que ande</TouchableOpacity>
+    </View>
+  );
+}
+
+function ScreenB3() {
+  const navigation = useNavigation();
+  const [text, setText] = useState("");
+  return (
+    <View style={styles.searchScreen}>
+      <Text style={styles.text}>BUSCADOR</Text>
+      <TextInput style={styles.input} placeholder="Buscador" onSubmitEditing={setText("Este tampoco.")}></TextInput>
+      <Text style={styles.description}>
+        {text}
+      </Text>
+      <TouchableOpacity onPress={() => navigation.navigate('ScreenB1')} style={styles.button}>Buscar un buscador que ande</TouchableOpacity>
     </View>
   );
 }
@@ -194,6 +209,7 @@ function StackBNavigator() {
     <StackB.Navigator>
       <StackB.Screen name="ScreenB1" component={ScreenB1} />
       <StackB.Screen name="ScreenB2" component={ScreenB2} />
+      <StackB.Screen name="ScreenB3" component={ScreenB3} />
     </StackB.Navigator>
   );
 }
