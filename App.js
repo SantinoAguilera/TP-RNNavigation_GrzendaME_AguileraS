@@ -21,7 +21,7 @@ function Home1() {
       <Text style={styles.text}>HOME</Text>
       <Image source={homeImage} style={styles.homeImage}></Image>
       <Text style={styles.label}>Ingresa tu nombre:</Text>
-      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={(newText) => setText("Bienvenido a Home, " + newText + "!")}></TextInput>
+      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={() => setText("Bienvenido a Home, " + event.nativeEvent.text + "!")}></TextInput>
       <Text style={styles.description}>
         {text}
       </Text>
@@ -39,7 +39,7 @@ function Home2() {
       <Text style={styles.text}>HOME... 2?</Text>
       <Image source={homeImage} style={styles.homeImage}></Image>
       <Text style={styles.label}>Ingresa tu nombre:</Text>
-      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={(newText) => setText("Bienvenido a Home 2, " + newText + "!")}></TextInput>
+      <TextInput style={styles.input} placeholder="Ingresa tu nombre" onSubmitEditing={() => setText("Bienvenido a Home 2, " + event.nativeEvent.text + "!")}></TextInput>
       <Text style={styles.description}>
         {text}
       </Text>
