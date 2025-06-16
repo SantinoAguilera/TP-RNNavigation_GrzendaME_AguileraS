@@ -156,7 +156,7 @@ function ScreenD1() {
     <View style={styles.creditosScreen}>
       <Text style={styles.text}>CREDITOS</Text>
       <Text style={styles.description}>
-        TP hecho por estas dos creaturas:
+        TP hecho por estas dos criaturas:
         {'\n\n'}
         <Image source={matiImage} style={styles.creditsImage}></Image>
         <Image source={sasaImage} style={styles.creditsImage}></Image>
@@ -173,7 +173,7 @@ function ScreenD2() {
     <View style={styles.creditosScreen}>
       <Text style={styles.text}>CREDITOS</Text>
       <Text style={styles.description}>
-        TP hecho por estas dos creaturas:
+        TP hecho por estas dos criaturas:
         {'\n\n'}
         <Image source={sasaImage} style={styles.creditsImage}></Image>
         <Image source={matiImage} style={styles.creditsImage}></Image>
