@@ -57,7 +57,7 @@ function ScreenB1() {
   return (
     <View style={styles.searchScreen}>
       <Text style={styles.text}>BUSCADOR</Text>
-      <TextInput style={styles.input} placeholder="Buscador" onSubmitEditing={setText("El buscador se encuentra en mantenimiento.")}></TextInput>
+      <TextInput style={styles.input} placeholder="Buscador" onSubmitEditing={() => setText("El buscador se encuentra en mantenimiento.")}></TextInput>
       <Text style={styles.description}>
         {text}
       </Text>
@@ -72,7 +72,7 @@ function ScreenB2() {
   return (
     <View style={styles.searchScreen}>
       <Text style={styles.text}>BUSCADOR</Text>
-      <TextInput style={styles.input} placeholder="Buscador" onSubmitEditing={setText("No es este.")}></TextInput>
+      <TextInput style={styles.input} placeholder="Buscador" onSubmitEditing={() => setText("No es este.")}></TextInput>
       <Text style={styles.description}>
         {text}
       </Text>
@@ -87,7 +87,7 @@ function ScreenB3() {
   return (
     <View style={styles.searchScreen}>
       <Text style={styles.text}>BUSCADOR</Text>
-      <TextInput style={styles.input} placeholder="Buscador" onSubmitEditing={setText("Este tampoco.")}></TextInput>
+      <TextInput style={styles.input} placeholder="Buscador" onSubmitEditing={() => setText("Este tampoco.")}></TextInput>
       <Text style={styles.description}>
         {text}
       </Text>
